@@ -4,7 +4,7 @@ const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJWT = require('passport-jwt').ExtractJwt;
 
 const config = require('../config/config');
-const userController = require('../controllers/user.controller');
+const userController = require('../controllers/user.controller')
 
 const localLogin = new LocalStrategy(
     {
