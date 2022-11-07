@@ -16,13 +16,18 @@
     number:{
         type:String ,
     required :true ,
+    unique:true
     }
  ,
 
  members :[studentSchema] , 
 
+ key:{
+     type:Boolean  ,
+     required:true
+ },
 
- })
+ })  ;
 
 
  

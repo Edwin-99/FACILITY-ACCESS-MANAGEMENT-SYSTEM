@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+
 const config = require('./config');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
@@ -9,7 +10,6 @@ const routes = require('../routes');
 const passport = require('../middleware/passport');
 
 const HttpError = require('http-errors');
-
 // get app
 const app = express();
 

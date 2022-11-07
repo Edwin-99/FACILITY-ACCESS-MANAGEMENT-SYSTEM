@@ -7,6 +7,7 @@ const girlsRoomsRoutes = require('./girlsRooms.route');
 const priceDetailsRoutes = require('./priceDetails.route');
 const contactReplyRoutes = require('./contactReply.route');
 const usersRoutes = require('./users.route');
+const roomRoutes = require('./roomRoute') ; 
 const adminRoutes = require('./adminRoute.js');
 const router = express.Router();
 
@@ -20,5 +21,6 @@ router.use('/prices', priceDetailsRoutes);
 router.use('/contactReply', contactReplyRoutes);
 router.use('/users', usersRoutes);
 router.use('/admin' , adminRoutes );
+router.use('/room' , roomRoutes); 
 
 module.exports = router;

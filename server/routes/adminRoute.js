@@ -8,8 +8,8 @@ const passport = require('../middleware/passport');
 const router = express.Router();
 
 router.route('/:id') 
-.get(isAdmin.isAdmin , asyncHandler(adminController.AddPorter)) 
-.delete(isAdmin.isAdmin , asyncHandler(adminController.deletePorter));
+.get( passport.authenticate('jwt',{session:false}),isAdmin.isAdmin , asyncHandler(adminController.AddPorter)) 
+.delete(passport.authenticate('jwt',{session:false}),isAdmin.isAdmin , asyncHandler(adminController.deletePorter));
 
 
 
