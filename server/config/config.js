@@ -6,7 +6,7 @@ module.exports = {
     port : 4050,
     env: 'development',
     mongo: {
-        uri: 'mongodb+srv://Edwin1234:ehyXNK1NhLjyd7YM@cluster0.mlhxoi1.mongodb.net/?retryWrites=true&w=majority',
+        uri: '',
         port: envVars.MONGO_PORT,
         isDebug:true
     },
