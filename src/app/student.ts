@@ -15,3 +15,11 @@ export interface Student {
     collegeName: string;
     isStatus: boolean;
 }
+
+
+export interface Room{
+
+    members:string[] ;
+    number:number
+ 
+ }

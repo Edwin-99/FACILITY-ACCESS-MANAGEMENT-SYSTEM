@@ -6,3 +6,5 @@ export interface Room {
     person2: boolean; 
     person3: boolean; 
 }
+
+

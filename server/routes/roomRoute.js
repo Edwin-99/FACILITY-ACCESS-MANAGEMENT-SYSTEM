@@ -15,4 +15,9 @@ Router.route('/members')
 
 Router.route('/members/:Membersid')
 .delete(passport.authenticate('jwt' ,  {session:false}) ,Auth , asyncHandler(roomController.deleteMember) )
+
+
+
+Router.route('/totalNumber')
+.get(passport.authenticate('jwt' ,  {session:false}) ,Auth , asyncHandler(roomController.totalNumber))
 module.exports =  Router;

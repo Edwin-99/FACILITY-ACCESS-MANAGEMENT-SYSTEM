@@ -76,3 +76,19 @@ await room.save();
  res.status(200).send(room);
 
 }
+
+exports.totalNumber =async(req , res)=>{
+
+       const rooms =  await Room.find({}) ; 
+       
+
+        const total = rooms.reduce((value , room ,  i )=>{
+            
+            return  value += room.members.length ; 
+       
+       } , 0 )
+       console.log(total);
+
+  res.status(200).send({total:54}) ; 
+
+}

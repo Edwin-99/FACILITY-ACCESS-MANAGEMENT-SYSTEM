@@ -61,9 +61,10 @@ export class AdminService {
   }
 
   boysSuperDeluxRooms() {
-    return this.httpClient.get<any>(`http://localhost:4050/api/boysRooms/superDeluxeRooms`).pipe
+    return this.httpClient.get<any>(`http://localhost:4050/api/room/totalNumber`).pipe
     (
-      switchMap(({ total }) => {
+      switchMap(({total}) => {
+        console.log('this is total' ,total);
         return of(total);
       }),
       catchError(error => {
@@ -85,6 +86,8 @@ export class AdminService {
       })
     );
   }
+
+ 
 
   boysStandardRooms() {
     return this.httpClient.get<any>(`http://localhost:4050/api/boysRooms/standardRooms`).pipe

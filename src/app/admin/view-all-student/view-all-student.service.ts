@@ -28,5 +28,17 @@ export class ViewAllStudentService {
     );
   }
 
-
+  findRoom() {
+    return this.httpClient.get<any>(`http://localhost:4050/api/room/`).pipe
+    (
+      switchMap(({ rooms }) => {
+        console.log(rooms);
+        return of(rooms);
+      }),
+      catchError(error => {
+        const msg = "Boys Delux Room Details not fetch. Please try again";
+        return of(msg);
+      })
+    );
+  }
 }

@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private router: Router, private adminService: AdminService) { 
 
-    this.adminService.boysSuperDeluxRooms().subscribe((total) => { this.availability.boysSuperDeluxeRooms = total.length; });
+    this.adminService.boysSuperDeluxRooms().subscribe((total) => { this.availability.boysSuperDeluxeRooms = total});
     this.adminService.boysDeluxRooms().subscribe((total) => { this.availability.boysDeluxeRooms = total.length; });
     this.adminService.boysStandardRooms().subscribe((total) => { this.availability.boysStandardRooms = total.length; });
     this.adminService.girlsSuperDeluxRooms().subscribe((total) => { this.availability.girlsSuperDeluxeRooms = total.length; });
