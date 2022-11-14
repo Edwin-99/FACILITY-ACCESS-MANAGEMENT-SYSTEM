@@ -66,14 +66,16 @@ exports.addMember=async(req,res)=>{
    
   const  room =  await Room.findOne({number:number}) ; 
   if(!room)
-         return res.status(404).send({message:'Room does not exist'});
+         return res.status(404).send({msg:'Room does not exist'});
 
+         if(room.members.length === 4)
+         return res.status(403).send({msg:'Room is full'});    
 
  room.members.push(req.body);
 
 await room.save(); 
 
- res.status(200).send(room);
+ res.status(200).send({room , msg:"done"});
 
 }
 

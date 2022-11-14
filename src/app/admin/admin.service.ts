@@ -28,7 +28,24 @@ export class AdminService {
       })
     );
   }
-
+  AddStudent(studentToSave: any) {
+    return this.httpClient.post<any>(`http://localhost:4050/api/room/members?number=${studentToSave.number}`,{
+      name:studentToSave.name ,
+      indexNumber:studentToSave.indexNumber
+    }).pipe
+    (
+      switchMap(({ room, msg }) => {
+        // console.log(room);
+        return of(msg);
+      }),
+      catchError(err => {
+        console.log( err.error);
+        
+        const msg = err.error.msg;
+        return of(msg);
+      })
+    );
+  }
   updateStudent(studentToUpdate: any) {
     // console.log(`updating student details`);
     // console.log(studentToUpdate);

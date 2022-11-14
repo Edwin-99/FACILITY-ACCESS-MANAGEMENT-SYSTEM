@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Student , Room } from 'src/app/student';
+import { Student , Room , member } from 'src/app/student';
 import { ViewAllStudentService } from './view-all-student.service';
 
 @Component({
@@ -30,7 +30,8 @@ export class ViewAllStudentComponent implements OnInit {
   standardRoomsFemaleStudents: Student[] = [];
 
   searchRooms: Room[] = [];
-  members:string[] = []
+  members:member[] = [];
+  members2:string[] =[];
   searchIsDone: boolean = false;
   searchmsg: string = "No Student Found!!";
 
@@ -84,6 +85,9 @@ export class ViewAllStudentComponent implements OnInit {
     this.searchRooms = this.students.filter(room => roomNoDetails.rNo === +room.number);
     this.members =  this.searchRooms[0]? this.searchRooms[0].members : [];
     console.log(this.members);
+       this.members2  = this.members.map(member=>{
+      return `${member.name}  ${member.indexNumber}`
+    })
   console.log(this.searchRooms)
     this.searchIsDone = true;
   }

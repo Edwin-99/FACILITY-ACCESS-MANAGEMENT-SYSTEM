@@ -32,9 +32,10 @@ export class StudentAddComponent implements OnInit {
 
   studentDetails = new FormGroup({
     roomCategory : new FormControl('',[Validators.required]),
+    number: new FormControl('',[Validators.required, Validators.pattern("[0-9]{3}")]),
     roomNo: new FormControl('',[Validators.required]),
-    firstName: new FormControl('',[Validators.required]),
-    lastName: new FormControl('',[Validators.required]),
+    indexNumber:new FormControl('',[Validators.required, Validators.pattern("[0-9]{8}")]),
+    name: new FormControl('',[Validators.required]),
     fatherName: new FormControl('',[Validators.required]),
     gender: new FormControl('',[Validators.required]),
     mobileNo: new FormControl('',[Validators.required, Validators.pattern("[7-9]{1}[0-9]{9}")]),
@@ -48,12 +49,12 @@ export class StudentAddComponent implements OnInit {
 
   constructor(private router: Router, private adminService: AdminService) {
     // console.log(this.studentDetails);
-    this.adminService.boysSuperDeluxRooms().subscribe((total) => { 
-      for (let i of total) {
-        this.boysSuperDeluxRoomNo = this.boysSuperDeluxRoomNo.concat(i.roomNo);
-      }
-      this.boysSuperDeluxRooms = total;
-    });
+    // this.adminService.boysSuperDeluxRooms().subscribe((total) => { 
+    //   for (let i of total) {
+    //     this.boysSuperDeluxRoomNo = this.boysSuperDeluxRoomNo.concat(i.roomNo);
+    //   }
+    //   this.boysSuperDeluxRooms = total;
+    // });
     this.adminService.boysDeluxRooms().subscribe((total) => { 
       for (let i of total) {
         this.boysDeluxRoomNo = this.boysDeluxRoomNo.concat(i.roomNo);
@@ -145,36 +146,37 @@ export class StudentAddComponent implements OnInit {
   }
 
   addStudent() {
-    if(!this.studentDetails.valid) {
-      alert('Please Enter Valiad Value !');
-      return;
-    }
-    // console.log(this.studentDetails);
-    const student = this.studentDetails.getRawValue();
-    let roomDetail = this.boysSuperDeluxRooms.find(({ roomNo }) => roomNo == student.roomNo);
-    if(roomDetail == null) {
-      roomDetail = this.boysDeluxRooms.find(({ roomNo }) => roomNo == student.roomNo);
-      if(roomDetail == null) {
-        roomDetail = this.boysStandardRooms.find(({ roomNo }) => roomNo == student.roomNo);
-        if(roomDetail == null) {
-          roomDetail = this.girlsSuperDeluxRooms.find(({ roomNo }) => roomNo == student.roomNo);
-          if(roomDetail == null) {
-            roomDetail = this.girlsDeluxRooms.find(({ roomNo }) => roomNo == student.roomNo);
-            if(roomDetail == null) {
-              roomDetail = this.girlsStandardRooms.find(({ roomNo }) => roomNo == student.roomNo);
-              if(roomDetail == null) {
-                alert("error");
-                return;
-              }
-            }
-          }
-        }
-      }
-    }
-    student.personNo = roomDetail.personNo;
+    // if(!this.studentDetails.valid) {
+    //   alert('Please Enter Valiad Value !');
+    //   return;
+    // }
+    console.log(this.studentDetails);
+    const {number , indexNumber ,name} = this.studentDetails.getRawValue();
+    
+    // let roomDetail = this.boysSuperDeluxRooms.find(({ roomNo }) => roomNo == student.roomNo);
+    // if(roomDetail == null) {
+    //   roomDetail = this.boysDeluxRooms.find(({ roomNo }) => roomNo == student.roomNo);
+    //   if(roomDetail == null) {
+    //     roomDetail = this.boysStandardRooms.find(({ roomNo }) => roomNo == student.roomNo);
+    //     if(roomDetail == null) {
+    //       roomDetail = this.girlsSuperDeluxRooms.find(({ roomNo }) => roomNo == student.roomNo);
+    //       if(roomDetail == null) {
+    //         roomDetail = this.girlsDeluxRooms.find(({ roomNo }) => roomNo == student.roomNo);
+    //         if(roomDetail == null) {
+    //           roomDetail = this.girlsStandardRooms.find(({ roomNo }) => roomNo == student.roomNo);
+    //           if(roomDetail == null) {
+    //             alert("error");
+    //             return;
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
+    // student.personNo = roomDetail.personNo;
     // console.log(student);
-
-    this.adminService.addStudent(student).subscribe(s => {
+ console.log(`${number}` , `${indexNumber}` , name)
+    this.adminService.AddStudent({number:`${number}` , indexNumber:`${indexNumber}` , name}).subscribe(s => {
       alert(s);
       this.router.navigate(['/admin/viewStudent']);
     });
@@ -187,7 +189,12 @@ export class StudentAddComponent implements OnInit {
   get mobileNo() {
     return this.studentDetails.get('mobileNo');
   } 
-
+  get number() {
+    return this.studentDetails.get('number');
+  } 
+  get indexNumber(){
+    return this.studentDetails.get('indexNumber');
+  }
   get fatherMobileNo() {
     return this.studentDetails.get('fatherMobileNo');
   } 

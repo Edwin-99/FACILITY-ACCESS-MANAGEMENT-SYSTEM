@@ -19,7 +19,14 @@ export interface Student {
 
 export interface Room{
 
-    members:string[] ;
+    members:member[] ;
     number:number
  
+ }
+
+
+ export interface member{
+name:string; 
+indexNumber:string;
+_id:string
  }

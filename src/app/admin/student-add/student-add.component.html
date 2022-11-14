@@ -28,28 +28,36 @@
                                 <div class="col-md-12">
                                     <select class="form-select mt-3" name="roomCategory" formControlName="roomCategory" (change)="genderOrRoomCatSelected()" required>
                                           <option selected disabled value="">Room Category</option>
-                                          <option value="Super Deluxe">Super Delux Room</option>
-                                          <option value="Deluxe">Delux Room</option>
-                                          <option value="Standard">Standard Room</option>
+                                          <option value="Super Deluxe">Main</option>
+                                          <option value="Deluxe">Annex A</option>
+                                          <option value="Standard">Annex B</option>
                                    </select>
                                 </div>
                             <span *ngIf="showRoomNo == true">
-                                <div class="col-md-12">
+                                <!-- <div class="col-md-12">
                                     <select class="form-select mt-3" name="roomNo" formControlName="roomNo" required>
-                                          <option selected disabled value="">Room No</option>
+                                          <option selected disabled value="">2</option>
                                           <option *ngFor='let i of roomNo' value={{i}}> {{i}} </option>
                                    </select>
-                                </div>
+                                </div> -->
 
                                 <div class="col-md-12">
-                                   <input class="form-control" type="text" name="firstName" formControlName="firstName" placeholder="First Name" required>
+                                    <input class="form-control" type="number" name="number" formControlName="number" placeholder="RoomNo" required>
                                 </div>
 
-                                <div class="col-md-12">
-                                    <input class="form-control" type="text" name="lastName" formControlName="lastName" placeholder="Last Name" required>
-                                </div>
+                                <div class="col-md-12 text-right" *ngIf="number!==null && number.invalid"><small style="color:red;">please enter valid room number</small></div>
 
                                 <div class="col-md-12">
+                                    <input class="form-control" type="number" name="indexNumber" formControlName="indexNumber" placeholder="index Number" required>
+                                </div> 
+
+                                <div class="col-md-12 text-right" *ngIf="indexNumber!==null && indexNumber.invalid"><small style="color:red;">please enter valid index number</small></div>
+
+                                <div class="col-md-12">
+                                    <input class="form-control" type="text" name="name" formControlName="name" placeholder="name" required>
+                                </div>
+                                  
+                                <!-- <div class="col-md-12">
                                     <input class="form-control" type="text" name="fatherName" formControlName="fatherName" placeholder="Father Name" required>
                                 </div>
                                 
@@ -90,7 +98,7 @@
                                     <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required checked>
                                     <label class="form-check-label">I confirm that all data are correct</label>
                                 </div>
-                      
+                       -->
     
                                 <div class="form-button mt-3">
                                     <button id="submit" type="submit" (click)="addStudent()" class="btn btn-primary">Register</button>
