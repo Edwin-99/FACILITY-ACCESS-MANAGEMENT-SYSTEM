@@ -5,9 +5,9 @@ exports.deletePorter = async (req , res, next)=>{
      
     const PorterId =  req.params.id ; 
     const porter =  await User.findById(PorterId) ;
- if(porter.role !== 'Porter'){
+ if(porter.role === 'Admin'){
 
-    return res.status(403).json({message:"Can only delete a porter"}) ; 
+    return res.status(403).json({message:"Cannot delete an admin"}) ; 
 
 
  }
@@ -15,7 +15,7 @@ exports.deletePorter = async (req , res, next)=>{
     
  await User.findByIdAndDelete(PorterId); 
  res.status(200) ;
- res.send({message:'done'}) ; 
+ res.send({msg:'done'}) ; 
  
 
 
@@ -36,7 +36,7 @@ console.log(user);
 user.set('role' , 'Porter') ;
 await user.save();
  res.status(200) ;
- res.send({message:'done' ,  porter:user}) ; 
+ res.send({msg:'done' ,  porter:user}) ; 
 
 
 }

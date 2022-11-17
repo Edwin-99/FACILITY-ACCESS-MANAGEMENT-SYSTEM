@@ -77,6 +77,20 @@ export class AdminService {
     );
   }
 
+  removeStudentw(_id: string , number:number) {
+    return this.httpClient.delete<any>(`http://localhost:4050/api/room/members/${_id}?number=${number}`)
+    .pipe(
+      switchMap(({ msg }) => {
+        // console.log(msg);
+        return of(msg);
+      }),
+      catchError(error => {
+        const msg = "Student  not Removed. Please try again";
+        // console.log(error);
+        return of(msg);
+      })
+    );
+  }
   boysSuperDeluxRooms() {
     return this.httpClient.get<any>(`http://localhost:4050/api/room/totalNumber`).pipe
     (
@@ -210,4 +224,34 @@ export class AdminService {
     );
   }
 
+addPorter(_id:string){
+
+  return this.httpClient.get<any>(`http://localhost:4050/api/admin/${_id}`)
+    .pipe(
+      switchMap(({ msg }) => {
+        // console.log(msg);
+        return of(msg);
+      }),
+      catchError(error => {
+        const msg = "failed try again";
+        return of(msg);
+      })
+    );
+
+}
+deleteUser(_id:string){
+
+  return this.httpClient.delete<any>(`http://localhost:4050/api/admin/${_id}`)
+    .pipe(
+      switchMap(({ msg }) => {
+        // console.log(msg);
+        return of(msg);
+      }),
+      catchError(error => {
+        const msg = "failed try again";
+        return of(msg);
+      })
+    );
+
+}
 }

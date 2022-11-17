@@ -5,6 +5,18 @@ import { catchError, switchMap } from 'rxjs/operators';
 import { TokenStorageService } from '../token-storage.service';
 import { User } from '../user';
 
+export let users:User = {
+  
+  username: " ",
+  firstName: " ",
+  lastName: " ",
+  mobileNumber: " ",
+  email: " ",
+  newPassword: " ",
+  role: " ",
+  
+}
+
 interface UserDto {
   user: User;
   token: string;
@@ -30,6 +42,7 @@ export class AuthService {
         this.setUser(user);
         this.tokenStorage.setToken(token);
         // console.log('found user', user);
+      
         return of(user);
       }),
       catchError(err => {
@@ -76,6 +89,8 @@ export class AuthService {
     (
       switchMap(({ user }) => {
         this.setUser(user);
+        users = {...users ,...user}  ;
+        console.log(users)
         // console.log('found user', user);
         return of(user);
       }),

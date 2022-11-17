@@ -71,3 +71,10 @@ label span {
     font-size: 22px;
     margin: 15px 0px 10px;
 }
+
+ tbody tr:nth-child(odd){
+    background-color: #6e6767;
+}
+tbody tr:nth-child(even){
+    background-color: white;
+}

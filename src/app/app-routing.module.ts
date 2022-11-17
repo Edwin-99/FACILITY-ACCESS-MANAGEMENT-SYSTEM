@@ -7,12 +7,16 @@ import { HostelDetailComponent } from './hostel-detail/hostel-detail.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProfileComponent } from './profile/profile.component';
+import  {SigninComponent} from './auth/signin/signin.component' ;
+import { ActivatedRoute, Router } from '@angular/router';
+import  {AuthService , users} from './auth/auth.service'
 
+console.log(users)
 const routes: Routes = [
   {
     path:'',
     pathMatch:'full',
-    redirectTo: 'dashboard'
+    redirectTo:  users.role === 'User'? 'dashboard'  :'admin'
   },
   {
     path:'auth',

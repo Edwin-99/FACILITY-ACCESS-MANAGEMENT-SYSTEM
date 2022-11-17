@@ -34,7 +34,10 @@
                                     <td>{{user.mobileNumber}}</td>
                                     <td>{{user.role}}</td>
                                     <td>
-                                        <button name="removeUser" class="btn btn-sm btn-danger" style="margin-left:9px;">Delete</button>
+                                        <button name="removeUser"  (click)="deleteUser(user._id , user.lastName)" class="btn btn-sm btn-danger" style="margin-left:9px;">Delete</button>
+                                    </td>
+                                    <td>
+                                        <button  *ngIf="user.role === 'User'"  name="removeUser" (click)="makePorter(user._id , user.lastName)" class="btn btn-sm btn-info" style="margin-left:9px;">Change Role</button>
                                     </td>
                                 </tr>
                             </tbody>

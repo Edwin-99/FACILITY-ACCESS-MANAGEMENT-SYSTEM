@@ -19,10 +19,41 @@
                     </div>
                     </div>
                 </form>
-
                 <span *ngIf="searchIsDone == true">
                     <h1 style="color: white;">Your Search Result</h1>
                     <div class="row">
+                <table *ngIf="members.length" class="table-bordered col-md-12 text-center">
+                    <thead style="background-color: rgb(111 202 203);">
+                        <tr>
+                            <th>No</th>
+                            <!-- <th style="width:7%">Photo</th> -->
+                            <th>index Number</th>
+                            <th>Name</th>
+                            <!-- <th>Email</th>
+                            <th>Phone No.</th>
+                            <th>Type</th> -->
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of members;let i = index">
+                            <td>{{i+1}}</td>
+                            <!-- <td><img src="../../assets/img/profileImg/{{user.username}}.jpg" onerror="src='../../assets/img/profileImg/profilePic.jpg'" alt="image for this user" width="100px" height="100px"></td> -->
+                            <td>{{user.indexNumber}}</td>
+                            <td>
+                                <p> <b>{{user.name}}</b></p>
+                                <!-- <p>Last Name : <b>{{user.lastName}}</b></p> -->
+                            </td>
+                            <!-- <td>{{user.email}}</td>
+                            <td>{{user.mobileNumber}}</td>
+                            <td>{{user.role}}</td> -->
+                            <td>
+                                <button name="removestudent" (click)="removeStudent(user._id)"  class="btn btn-sm btn-danger" style="margin-left:9px;">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+              
                         <div *ngFor="let room of searchRooms" class="col-md-2">
                             <div>
                             <!-- <div>
@@ -34,7 +65,7 @@
                             </div> -->
 
 
-                            <div style="width: 1000%; height: 400px;" >
+                            <!-- <div style="width: 1000%; height: 400px;" >
                                 
                                 
                                         <div *ngFor="let member of members2"
@@ -45,7 +76,7 @@
                                         </div>
                                 
                               
-                                    </div>
+                                    </div> -->
 
                                 <div *ngIf="!this.members.length" class="alert alert-info mx-2" role="alert" style="width: 400px;">
                                     room is empty

@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 // import { Router } from '@angular/router';
 // import { Subscription } from 'rxjs';
 // import { AuthService } from './auth/auth.service';
-// import { User } from './user';
+import { User } from './user';
 
 @Component({
   selector: 'hostel-root',
@@ -11,5 +11,5 @@ import { Component, OnDestroy } from '@angular/core';
 })
 export class AppComponent {
   title = 'hostelManagement';
-
+   user:User ; 
 }

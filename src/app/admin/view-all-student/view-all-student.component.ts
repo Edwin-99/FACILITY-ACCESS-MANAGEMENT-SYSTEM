@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Student , Room , member } from 'src/app/student';
 import { ViewAllStudentService } from './view-all-student.service';
-
+import {AdminService} from '../admin.service'
 @Component({
   selector: 'view-all-student',
   templateUrl: './view-all-student.component.html',
@@ -39,7 +39,7 @@ export class ViewAllStudentComponent implements OnInit {
     rNo: new FormControl('',[Validators.required])
   });
 
-  constructor(private viewAllStudentService: ViewAllStudentService, private router: Router) 
+  constructor(private viewAllStudentService: ViewAllStudentService, private router: Router , private adminService:AdminService)  
   { 
     this.viewAllStudentService.findRoom()
     .subscribe((rooms) => {
@@ -94,6 +94,25 @@ export class ViewAllStudentComponent implements OnInit {
 
   get rNo() {
     return this.rNoForSearch.get('rNo');
+  }
+
+
+  removeStudent(_id:string){
+    const number = this.rNoForSearch.getRawValue().rNo;
+   if(confirm(`Are you sure you want to remove student from  room  ${number}`)){
+    console.log(_id)
+   
+      console.log(number)
+
+    this.adminService.removeStudentw(_id , number).subscribe(s=>{
+
+      alert(s) 
+        window.location.reload();
+    })
+
+   }
+    
+
   }
 
 }

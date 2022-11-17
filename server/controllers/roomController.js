@@ -46,17 +46,17 @@ exports.getMembers = async (req,res)=>{
 
 exports.deleteMember = async (req,res)=>{
     const {number} = req.query  ;
-      const {Memberid}= req.params
+      const {Membersid}= req.params
     const  room =  await Room.findOne({number:number}) ; 
     if(!room)
            return res.status(404).send({message:'Room does not exist'});
     
    
-    room.members.id(Memberid).remove( );
+    room.members.id(Membersid).remove( );
 
     await room.save() ;
 
-    res.status(200).send({message:'done'});
+    res.status(200).send({msg:'done'});
 
 }
 
