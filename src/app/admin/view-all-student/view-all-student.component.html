@@ -20,7 +20,13 @@
                     </div>
                 </form>
                 <span *ngIf="searchIsDone == true">
+
                     <h1 style="color: white;">Your Search Result</h1>
+                    
+                 <h1 style="color: white;" *ngIf="key">Room key: <span class="btn-info">Available</span></h1>
+                 <h1 style="color: white;" *ngIf="!key">Room key: <span class="btn-danger">Unavailable</span></h1>
+                   
+                    <h1 style="color: white;"></h1>
                     <div class="row">
                 <table *ngIf="members.length" class="table-bordered col-md-12 text-center">
                     <thead style="background-color: rgb(111 202 203);">
@@ -47,7 +53,7 @@
                             <!-- <td>{{user.email}}</td>
                             <td>{{user.mobileNumber}}</td>
                             <td>{{user.role}}</td> -->
-                            <td>
+                            <td *ngIf="users?.role === 'Admin' ">
                                 <button name="removestudent" (click)="removeStudent(user._id)"  class="btn btn-sm btn-danger" style="margin-left:9px;">Delete</button>
                             </td>
                         </tr>

@@ -29,26 +29,15 @@ export class SigninComponent implements OnInit {
       .login(this.currentUsername, this.currentPassword)
       .subscribe(s => {
         console.log(s)
-        if(s.role === 'User'){
+      
 
-        return this.router.navigate(['']) ;
-        }
-        return this.router.navigate(['/admin']);
+         this.router.navigate(['']) ;
+      
       }, err => this.error = err);
   }
 
   redirectToHome() {
-    if(this.user.role ===  'User'){
-      this.router.navigate(['/dashboard']);
-    }
-         
-    this.router.navigate(['/admin']);
-    // navigate to dashboard page
+    this.router.navigate(['/dashboard']); // navigate to dashboard page
   }
-    
-  get  User(){
 
-    return this.user
-
-  }
 }

@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Student , Room , member } from 'src/app/student';
 import { ViewAllStudentService } from './view-all-student.service';
 import {AdminService} from '../admin.service'
+import  {User} from '../../user'
+import  {AuthService} from '../../auth/auth.service';
 @Component({
   selector: 'view-all-student',
   templateUrl: './view-all-student.component.html',
@@ -15,10 +17,10 @@ import {AdminService} from '../admin.service'
 
 
 export class ViewAllStudentComponent implements OnInit {
-
+users:User; 
   students:Room[] = [];
   msg: string;
-
+key:boolean;
   maleStudents: Student[] = [];
   superDeluxeRoomsMaleStudents: Student[] = [];
   deluxeRoomsMaleStudents: Student[] = [];
@@ -39,15 +41,18 @@ export class ViewAllStudentComponent implements OnInit {
     rNo: new FormControl('',[Validators.required])
   });
 
-  constructor(private viewAllStudentService: ViewAllStudentService, private router: Router , private adminService:AdminService)  
-  { 
+  constructor(private viewAllStudentService: ViewAllStudentService, private router: Router , private adminService:AdminService , private authService:AuthService)  
+  {
+    
+
+    this.authService.findMe().subscribe((user)=>this.users =  user);
     this.viewAllStudentService.findRoom()
     .subscribe((rooms) => {
         this.students =  rooms.map((room:any)=>{
                  return {
                    number:room.number   , 
                    members:room.members ,
-
+                   key:room.key
                  }
         });
 
@@ -84,6 +89,7 @@ export class ViewAllStudentComponent implements OnInit {
     console.log(roomNoDetails)
     this.searchRooms = this.students.filter(room => roomNoDetails.rNo === +room.number);
     this.members =  this.searchRooms[0]? this.searchRooms[0].members : [];
+    this.key = this.searchRooms[0].key || false;
     console.log(this.members);
        this.members2  = this.members.map(member=>{
       return `${member.name}  ${member.indexNumber}`

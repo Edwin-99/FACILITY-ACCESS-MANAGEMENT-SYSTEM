@@ -21,7 +21,7 @@ export interface Room{
 
     members:member[] ;
     number:number
- 
+    key:boolean;
  }
 
 

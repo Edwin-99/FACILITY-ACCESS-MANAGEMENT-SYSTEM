@@ -9,14 +9,15 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ProfileComponent } from './profile/profile.component';
 import  {SigninComponent} from './auth/signin/signin.component' ;
 import { ActivatedRoute, Router } from '@angular/router';
-import  {AuthService , users} from './auth/auth.service'
+import  {AuthService } from './auth/auth.service'
+import {AdminGuard} from './app.guard'
 
-console.log(users)
 const routes: Routes = [
   {
     path:'',
     pathMatch:'full',
-    redirectTo:  users.role === 'User'? 'dashboard'  :'admin'
+    redirectTo:  'dashboard' ,
+    
   },
   {
     path:'auth',

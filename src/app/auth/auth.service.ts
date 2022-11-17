@@ -89,8 +89,8 @@ export class AuthService {
     (
       switchMap(({ user }) => {
         this.setUser(user);
-        users = {...users ,...user}  ;
-        console.log(users)
+         
+       
         // console.log('found user', user);
         return of(user);
       }),

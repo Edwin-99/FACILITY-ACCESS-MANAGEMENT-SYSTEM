@@ -14,9 +14,9 @@
                         <h4 class="designation"> <strong>Number of Students</strong>: <span class="badge badge-pill badge-primary" style="color: black;font-weight: 500;">{{availability. boysSuperDeluxeRooms}}</span></h4>
                         <div class="profile-details">
                             <ul>
-                                <li><a routerLink="/admin/addStudent"><i class="fas fa-home"></i> Add Student</a></li>
+                                <li *ngIf="user?.role === 'Admin'"><a routerLink="/admin/addStudent"><i class="fas fa-home"></i> Add Student</a></li>
                                 <li><a routerLink="/admin/viewStudent"><i class="fas fa-user"></i> View Student</a></li>
-                                <li><a routerLink="/admin/updateStudent"><i class="fas fa-user-edit"></i> Update/Remove Student</a></li>
+                                
                             </ul>
                         </div>
                     </div>
@@ -29,9 +29,9 @@
                     <h4 class="designation"> <strong>Number of Students</strong> : <span class="badge badge-pill badge-primary" style="color: black;font-weight: 500;">{{availability. boysSuperDeluxeRooms}}</span></h4>
                     <div class="profile-details">
                         <ul>
-                        <li><a routerLink="/admin/addStudent"><i class="fas fa-home"></i> Add Student</a></li>
+                        <li *ngIf="user?.role === 'Admin'"><a routerLink="/admin/addStudent"><i class="fas fa-home"></i> Add Student</a></li>
                         <li><a routerLink="/admin/viewStudent"><i class="fas fa-user"></i> View Student</a></li>
-                        <li><a routerLink="/admin/updateStudent"><i class="fas fa-user-edit"></i> Update/Remove Student</a></li>
+
                         </ul>
                     </div>
                     </div>
@@ -44,9 +44,9 @@
                     <h4 class="designation"> <strong>Number of students</strong> : <span class="badge badge-pill badge-primary" style="color: black;font-weight: 500;">{{availability. boysSuperDeluxeRooms}}</span></h4>
                     <div class="profile-details">
                         <ul>
-                        <li><a routerLink="/admin/addStudent"><i class="fas fa-home"></i> Add Student</a></li>
+                        <li *ngIf="user?.role === 'Admin'"><a routerLink="/admin/addStudent"><i class="fas fa-home"></i> Add Student</a></li>
                         <li><a routerLink="/admin/viewStudent"><i class="fas fa-user"></i> View Student</a></li>
-                        <li><a routerLink="/admin/updateStudent"><i class="fas fa-user-edit"></i> Update/Remove Student</a></li>
+                       
                         </ul>
                     </div>
                     </div>
