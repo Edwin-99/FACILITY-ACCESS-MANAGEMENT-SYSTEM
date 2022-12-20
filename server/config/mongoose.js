@@ -13,7 +13,8 @@ db.once('open', () =>{
     console.log(`connected to the database: ${mongoUri}`);
 });
 
-db.on('error', ()=>{
+db.on('error', (err)=>{
+    console.log(err);
     throw new Error(`Error connecting to the database: ${mongoUri}`);
 });
 
