@@ -9,7 +9,7 @@ import { User } from '../user';
 })
 export class DashboardComponent implements OnInit {
 
-  title = 'Royal Care';
+  title = 'Facility Access Management System';
 user:User
   constructor() {
 

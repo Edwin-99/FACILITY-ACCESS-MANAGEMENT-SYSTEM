@@ -11,7 +11,7 @@ import { User } from '../user';
 })
 export class HeaderComponent  implements OnDestroy {
 
-  title = "Royal Care";
+  title = 'Facility Access Management System';
   user: User;
   userSubscription: Subscription;
 
